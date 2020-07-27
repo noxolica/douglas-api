@@ -1,6 +1,10 @@
+**Updates**:
+
+- July 26, 2020: we'll just use a Python helper function that deletes all records of a content type before replacing them with fresh data. The function will wait for the scrapers to finish before executing.
+
 # Summary
 
-I think we should have custom controlellers that handle everything related to writing data to Strapi. This will help contributors have an easier time developing for this project. Contributors would only need to focus on creating scrapers rather than focusing on resolving data differences between the STrapi instance and the college website. It'll look like this:
+I think we should have custom controllers that handle everything related to writing data to Strapi. This will help contributors have an easier time developing for this project. Contributors would only need to focus on creating scrapers rather than focusing on resolving data differences between the Strapi instance and the college website. It'll look like this:
 
 ```
                       ┌── backend ──────────────────────────────────┐
@@ -26,7 +30,7 @@ We should make this because it will ensure that data that goes in Strapi follows
 
 ## Risks
 
-All authenticated scrapers will have the complete control over the data in Strapi. This means that anybody with a key can potentially overwrite data that they do not have responsibility for. Imagine a Python scrript that writes data to Clubs suddenly writing data to Courses. Apart from creating hyperspecific roles and permissions, the only thing we can do is trust that the scraper will not compromise the data. All scrapers will be reviewed before placing them in production to mitigate the risk.
+All authenticated scrapers will have the complete control over the data in Strapi. This means that anybody with a key can potentially overwrite data that they do not have responsibility for. Imagine a Python script that writes data to Clubs suddenly writing data to Courses. Apart from creating hyperspecific roles and permissions, the only thing we can do is trust that the scraper will not compromise the data. All scrapers will be reviewed before placing them in production to mitigate the risk.
 
 The scrapers can either be hosted within the same machine as Strapi, or they can be deployed as discrete serverless services. I would rather have them run outside the same machine as Strapi, but it would be easier to execute them with a CRON script in the same machine.
 

@@ -44,7 +44,7 @@ class CsisProgram:
         return csisPrograms
     
     def convertCsv(self,csislist):
-        with open('data.txt','w') as data_file:
+        with open('csis_programs_data.txt','w') as data_file:
             wr = csv.writer(data_file,quoting=csv.QUOTE_ALL)
             wr.writerow(csislist)
 

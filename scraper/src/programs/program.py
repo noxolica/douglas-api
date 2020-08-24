@@ -62,7 +62,7 @@ class Program:
     def PBDCIS_program(self):
         stream1 = []
 
-        url = "https://www.douglascollege.ca/programs-courses/catalogue/programs/PBDCIS"
+        url = "https://www.douglascollege.ca/program/pbdcis"
         result = requests.get(url, headers=self.requestHeaders())		
         current_path = os.path.dirname(os.path.realpath(__file__))		
         # course.save_file_content(current_path + "/data.txt", result.text)
@@ -70,7 +70,7 @@ class Program:
         #this is the indicator of the table content
         # result = self.get_file_content(current_path + "/data.txt")
         soup = BeautifulSoup(result.text, "html.parser")
-        course_table = soup.find(id='curriculum').find("table")
+        course_table = soup.find(id='block-views-block-program-guidelines-block-4').find("table") 
         year1 = "Year I Coursework" 
         year2 = "Year II Coursework"
         sel_option = "Select one of the following 2 options"
